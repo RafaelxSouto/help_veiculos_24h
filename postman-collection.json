@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "guincho-24h-collection",
+		"name": "Guincho 24h - Help Veículos",
+		"description": "Coleção de testes para a API de solicitação de guincho",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Solicitar Guincho",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"placaVeiculo\": \"ABC1234\",\n    \"nomeCliente\": \"João Silva\",\n    \"foneCelular\": \"(11) 99999-9999\",\n    \"endereco\": \"Rua das Flores, 123, Centro\",\n    \"cidade\": \"São Paulo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/guincho/solicitar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"guincho",
+						"solicitar"
+					]
+				},
+				"description": "Endpoint para solicitar um guincho"
+			}
+		},
+		{
+			"name": "Buscar por Placa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/guincho/buscar/placa/ABC1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"guincho",
+						"buscar",
+						"placa",
+						"ABC1234"
+					]
+				},
+				"description": "Buscar solicitações por placa do veículo"
+			}
+		},
+		{
+			"name": "Buscar por Nome do Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/guincho/buscar/cliente/João",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"guincho",
+						"buscar",
+						"cliente",
+						"João"
+					]
+				},
+				"description": "Buscar solicitações por nome do cliente (busca parcial)"
+			}
+		},
+		{
+			"name": "Teste de Validação - Dados Inválidos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"placaVeiculo\": \"123\",\n    \"nomeCliente\": \"\",\n    \"foneCelular\": \"123456\",\n    \"endereco\": \"A\",\n    \"cidade\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/guincho/solicitar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"guincho",
+						"solicitar"
+					]
+				},
+				"description": "Teste com dados inválidos para verificar as validações"
+			}
+		}
+	]
+}
